@@ -1,0 +1,7 @@
+{
+  "galaxy.meteor.com": {
+     "env": {
+       "MONGO_URL": "mongodb://user:password@ds233208.mlab.com:33208/tasks"
+     }
+   }
+}
