@@ -10,8 +10,8 @@ Template.login.events({
 
 
 
-        var appClientId='Cdf02ee522417a2471f7caf853b064ebe2892d7c2511027d58e8d97ace9dd0bcb';
-	      var appRedirectUri='http://pollbot2.meteorapp.com';
+        var appClientId='Cb18b3c7a8b2f2a4f3abe0d8a4bb1947276a6577d3d4b1226ae43ba75d6901d53';
+	      var appRedirectUri='https://pollbot2.meteorapp.com';
 
         	//Build the request URL.  The base URL and next 4 items are typically always the same for Spark web apps
           var requestUrl = 'https://api.ciscospark.com/v1/authorize?' + 'response_type=code&' + 'scope='+ encodeURIComponent('spark:all') + '&' +'state=' + encodeURIComponent(str) + '&' +	'client_id=' + encodeURIComponent(appClientId) + '&' + 'redirect_uri=' + encodeURIComponent(appRedirectUri);

@@ -1,7 +1,7 @@
 /* CSS declarations go here */
 body {
   font-family: sans-serif;
-  background-color: #2F3E50;
+  background-color: #3D3E40;
   /* background-image: linear-gradient(to bottom, #315481, #918e82 100%); */
   /* background-attachment: fixed; */
 
@@ -57,7 +57,7 @@ button{
   height: 40px;
   cursor: pointer;
   margin: 0 auto;
-  border: 2px solid rgb(30,205,151);
+  border: 0px solid rgb(121,193,67);
   -webkit-border-radius: 40px;
   border-radius: 10px;
   font: normal 20px/30px "Advent Pro", CiscoSans, sans-serif;
@@ -66,7 +66,7 @@ button{
   -o-text-overflow: clip;
   text-overflow: clip;
   letter-spacing: 1px;
-  background: rgb(30, 205, 151);
+  background: rgb(121, 193, 67);
   -webkit-transition: background-color 0.3s cubic-bezier(0, 0, 0, 0), color 0.3s cubic-bezier(0, 0, 0, 0), width 0.3s cubic-bezier(0, 0, 0, 0), border-width 0.3s cubic-bezier(0, 0, 0, 0), border-color 0.3s cubic-bezier(0, 0, 0, 0);
   -moz-transition: background-color 0.3s cubic-bezier(0, 0, 0, 0), color 0.3s cubic-bezier(0, 0, 0, 0), width 0.3s cubic-bezier(0, 0, 0, 0), border-width 0.3s cubic-bezier(0, 0, 0, 0), border-color 0.3s cubic-bezier(0, 0, 0, 0);
   -o-transition: background-color 0.3s cubic-bezier(0, 0, 0, 0), color 0.3s cubic-bezier(0, 0, 0, 0), width 0.3s cubic-bezier(0, 0, 0, 0), border-width 0.3s cubic-bezier(0, 0, 0, 0), border-color 0.3s cubic-bezier(0, 0, 0, 0);
@@ -75,7 +75,7 @@ button{
 
 button:hover {
   color: rgba(255,255,255,1);
-  background: rgb(82, 191, 145);
+  background: rgb(105, 159, 70);
 }
 
 h1 {
@@ -166,4 +166,32 @@ header .hide-completed {
   .new-task input {
     padding-bottom: 5px;
   }
+}
+
+
+.float{
+	position:fixed;
+	width:60px;
+	height:60px;
+	right:40px;
+	background-color:#8ABF56;
+	color:#FFFF;
+	border-radius:50px;
+	text-align:center;
+	box-shadow: 2px 2px 3px #999;
+}
+
+.my-float{
+	margin-top:22px;
+}
+
+.overlay{
+      opacity:0.8;
+      background-color: #FFFFFF;
+      position:fixed;
+      width:100%;
+      height:100%;
+      top:0px;
+      left:0px;
+      z-index:1000;
 }
