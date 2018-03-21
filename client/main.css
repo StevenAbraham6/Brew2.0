@@ -195,3 +195,69 @@ header .hide-completed {
       left:0px;
       z-index:1000;
 }
+
+@media screen and (max-width: 600px) {
+    .column {
+        width: 100%;
+    }
+}
+.row {
+  margin: auto;
+}
+.column {
+    float: left;
+}
+
+.left {
+  width: 25%;
+}
+
+.right {
+  width: 75%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+#panelImg {
+  max-height:100%; 
+  max-width:100%;
+}
+
+#createPollForm {
+  background-color: #FFFFFF;
+}
+.plusShape {
+  display:inline-block!important;
+  position:relative;
+  width:30px;
+  height:30px;
+  border-radius:100%;
+  background-color:#8ABF56;
+  border:calc(30px/8) solid #8ABF56;
+  box-sizing:content-box
+}
+
+.plusShape:before {
+  position:absolute;
+  content:'';
+  margin:auto;
+  width:calc(30px/8);
+  height:calc(30px/1.5);
+  background-color:#fff;
+  top:0;bottom:0;left:0;right:0
+}
+
+.plusShape:after { 
+  position:absolute;
+  content:'';
+  margin:auto;
+  width:calc(30px/1.5);
+  height:calc(30px/8);
+  background-color:#fff;
+  top:0;bottom:0;left:0;right:0
+}
