@@ -1,12 +1,32 @@
 <template name="panel">
-<div class="overlay">
-<p>Logged in as {{emails}}</p>
-
-
-<a class="float">
-<i class="fa fa-plus my-float"></i>
-</a>
-
-<p>test</p>
-</div>
+  <div class="overlay">
+    <h2>Hi {{name}}</h2>
+    <a class="float">
+      <i class="fa fa-plus my-float"></i>
+    </a>
+    <div class="card-grid">
+      {{#each userPoll in userPolls}}
+      <div class="card-item">
+        <div class="card">
+          {{#if isActive userPoll.pollState}}
+            <div class="active-card-left">
+              Active
+            </div>
+            {{else}}
+            <div class="inactive-card-left">
+              InActive
+            </div>
+          {{/if}}
+          <div class="card-right">
+            <h2>{{userPoll.pollTitle}} </h2>
+            <p>{{spaceName userPoll.pollTargetRoom}} </p>   
+            <p>Created on {{retrieveDate userPoll.createdAt}}</p>   
+            <p>Responses #</p>
+          </div>
+        </div>
+      </div>
+      {{/each}}
+    </div>
+  </div>
 </template>
+
