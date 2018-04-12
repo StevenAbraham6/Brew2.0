@@ -10,18 +10,18 @@
         <div class="card">
           {{#if isActive userPoll.pollState}}
             <div class="active-card-left">
-              Active
+             {{percentage userPoll.questions}}%
             </div>
             {{else}}
             <div class="inactive-card-left">
-              InActive
+              {{percentage userPoll.responses}}%
             </div>
           {{/if}}
           <div class="card-right">
             <h2>{{userPoll.pollTitle}} </h2>
             <p>{{spaceName userPoll.pollTargetRoom}} </p>   
             <p>Created on {{retrieveDate userPoll.createdAt}}</p>   
-            <p>Responses #</p>
+            <p>Responses {{totalResponse userPoll.questions}}</p>
           </div>
         </div>
       </div>

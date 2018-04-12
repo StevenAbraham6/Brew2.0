@@ -6,7 +6,7 @@ Template.panel.helpers({
   name() {
     var username = Session.get('username') //get username of logged in user
     console.log("testing")
-    username = 'Ahalya'
+    //username = 'Ahalya'
     return username;
   },
   userPolls() {
@@ -31,6 +31,20 @@ Template.panel.helpers({
   },
   retrieveDate(createdAt){
     return createdAt.substring(0, 10);
+  },
+  totalResponse(userPollResponse){
+    var total=0
+    var response
+    console.log("Outresp", userPollResponse)
+    for (response in userPollResponse) {
+      total+=response
+      console.log("resp", response)
+    }
+    return total
+  },
+  percentage(userPollResponse){
+    var percentage =0;
+    return percentage
   }
 });
 
