@@ -1,26 +1,28 @@
 <template name="panel">
-  <div class="overlay">
-    <h2>Hi {{name}}</h2>
+  <div class="header-bar">
+    <div class= "header-title">Hi {{name}}</div>
     <a class="float">
       <i class="fa fa-plus my-float"></i>
     </a>
+  </div>
+  <div class="overlay">
     <div class="card-grid">
       {{#each userPoll in userPolls}}
       <div class="card-item">
         <div class="card">
           {{#if isActive userPoll.pollState}}
             <div class="active-card-left">
-             {{percentage userPoll.questions}}%
+             <h1>{{percentage userPoll.questions}}%</h1>
             </div>
             {{else}}
             <div class="inactive-card-left">
-              {{percentage userPoll.responses}}%
+              <h1>{{percentage userPoll.questions}}%</h1>
             </div>
           {{/if}}
           <div class="card-right">
             <h2>{{userPoll.pollTitle}} </h2>
             <p>{{spaceName userPoll.pollTargetRoom}} </p>   
-            <p>Created on {{retrieveDate userPoll.createdAt}}</p>   
+            <p>Created at {{retrieveDate userPoll.createdAt}}</p>   
             <p>Responses {{totalResponse userPoll.questions}}</p>
           </div>
         </div>

@@ -32,18 +32,28 @@ Template.panel.helpers({
   retrieveDate(createdAt){
     return createdAt.substring(0, 10);
   },
-  totalResponse(userPollResponse){
-    var total=0
-    var response
-    console.log("Outresp", userPollResponse)
-    for (response in userPollResponse) {
-      total+=response
-      console.log("resp", response)
+  totalResponse(questions){
+    var total= 0;
+    if(questions.length >= 1)
+    {
+      var responses = questions[0].responses
+      for (var r in responses) {
+        total += parseInt(r)
+      }
     }
+    
     return total
   },
-  percentage(userPollResponse){
-    var percentage =0;
+  percentage(questions){
+    var percentage = 0.0,total=0
+      var max = questions[0].responses[0]
+      for( var r in questions[0].responses) {
+        total+=parseInt(r);
+        if(parseInt(r)>parseInt(max)){
+          max=r
+        }
+    }
+    percentage = ((max / total) * 100).toFixed(2);
     return percentage
   }
 });

@@ -168,7 +168,8 @@ header .hide-completed {
 
 
 .float{
-	position:fixed;
+  position:fixed;
+  top: 20px;
 	width:60px;
 	height:60px;
 	right:40px;
@@ -176,7 +177,8 @@ header .hide-completed {
 	color:#FFFF;
 	border-radius:50px;
 	text-align:center;
-	box-shadow: 2px 2px 3px #999;
+  box-shadow: 2px 2px 3px #999;
+  font-size: 1.5em;
 }
 
 .my-float{
@@ -190,8 +192,9 @@ header .hide-completed {
       height:100%;
       top:0px;
       left:0px;
-      z-index:1000;
+      z-index:-100;
       overflow-y: scroll;
+      padding-top: 70px
 }
 
 @media screen and (max-width: 600px) {
@@ -281,23 +284,47 @@ header .hide-completed {
 }
 
 .inactive-card-left{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
   width: 30%;
   height: 100%;
   float: left;
   padding: 10px 0 0 10px;
   background-color:#d9d9d9;
+  color: #fff;
 }
 .active-card-left{ 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
   width: 30%;
   height: 100%;  
   float: left;
   padding: 10px 0 0 10px;  
-  background-color: #79c143
+  background-color: #79c143;
+  color: #fff;
 }
 .card-right { 
   width: 70%;
   height: 100%;  
   padding: 10px 10px 10px 170px;
+}
+
+.header-bar{
+  background-color: #353538;
+  color: #fff;
+  padding-left: 20px;
+  position:fixed;
+  width: 100%;
+  top:0px;
+  left:0px;
+}
+
+.header-title {
+  font-size: 3em;
 }
 
 
