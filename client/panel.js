@@ -5,18 +5,17 @@ import { Tasks } from "../imports/api/tasks";
 Template.panel.helpers({
   name() {
     var username = Session.get('username') //get username of logged in user
-    console.log("testing")
+    console.log("Username ",username )
     //username = 'Ahalya'
     return username;
   },
   userPolls() {
-    //var pollOwnerId= this.userId;
-    var pollOwnerId = "Th94zGtPEDf29CAqX"
+    var pollOwnerId= Session.get("userId");
+    //var pollOwnerId = "Th94zGtPEDf29CAqX"
     var query = {
       pollOwnerId: pollOwnerId
     }
-    var userPolls = Tasks.find().fetch();
-    console.log("Hii",userPolls);
+    var userPolls = Tasks.find({pollOwnerId: pollOwnerId}).fetch();
     return userPolls
   },
   isActive(pollState){
@@ -30,41 +29,67 @@ Template.panel.helpers({
    return "Space Name Place Holder"
   },
   retrieveDate(createdAt){
-    return createdAt.substring(0, 10);
+    if(createdAt) {
+      return createdAt.substring(0, 10);
+    }
   },
   totalResponse(questions){
     var total= 0;
-    if(questions.length >= 1)
+    if(questions.length >= 1 && questions[0].responses)
     {
-      var responses = questions[0].responses
-      for (var r in responses) {
-        total += parseInt(r)
+      var response = questions[0].responses
+      for (var i = 0; i < response.length; i++) {
+        total += parseInt(response[i])
       }
-    }
-    
+    } 
     return total
   },
+
   percentage(questions){
-    var percentage = 0.0,total=0
-      var max = questions[0].responses[0]
-      for( var r in questions[0].responses) {
-        total+=parseInt(r);
-        if(parseInt(r)>parseInt(max)){
-          max=r
-        }
+    var percentage = 0.0,total=0;
+    if(questions[0]) {
+      var max = questions[0].responses[0], response = questions[0].responses
+      for (var i = 0; i < response.length; i++) {
+          var r = response[i]
+          total += parseInt(r);
+          if(parseInt(r)>parseInt(max)){
+            max=r
+          }
+      }
     }
-    percentage = ((max / total) * 100).toFixed(2);
+    percentage = max!==0?((max / total) * 100).toFixed(2):0;
     return percentage
+  },
+
+  highestOption(questions) {
+    var option = -1
+    if (questions[0]) {
+      var max = questions[0].responses[0], response = questions[0].responses
+      for (var i = 0; i < response.length; i++)
+      {
+        if (parseInt(response[i]) > parseInt(max)) {
+          max = response[i]
+          option = i
+        }
+      }
+      if(option!== -1) {
+        option = String.fromCharCode('A'.charCodeAt(0) + option)
+        return "Option " + option
+      }
+    }
   }
 });
 
 Template.panel.events({
   'click .float': function () {
-    // implement here the code on click
     console.log("You pressed the button")
-    // FlowRouter.go('createRoute');
-    //Tasks.insert({ "pollId": "NewTestPoll", "pollTitle": "The Breakfast Poll", "pollOwnerId": "Th94zGtPEDf29CAqX", "pollState": "Complete", "createdAt": "2018-04-03T09:52:19.789Z","pollTargetRoom": "Y2lzY29zcGFyazovL3VzL1JPT00vODEwNWRiYTAtMDAxOC0xMWU4LTliZTMtMGJhN2ZjZjgwNzc5", "questions": [{ "text": "do u want Chinese?", "options": ["Yes", "No", "Maybe"], "responses": [0, 3, 1] }, { "text": "do u want Indian?", "options": ["Yes1", "No1"], "responses": [0, 0] }] } )
-    //Tasks.remove({ _id: "yAyembwmqwhbnWZiq"})
+    FlowRouter.go('/create')
 
   },
+  'click .card-item': function goToPoll(e) {
+    var selectedPollId =e.currentTarget.getAttribute('pollId');
+    console.log("Card pressed", selectedPollId);
+    Session.set({ 'pollId': selectedPollId});
+    FlowRouter.go('/pollDetail')
+  }
 });

@@ -1,21 +1,21 @@
 <template name="create">
-    <div class="overlay">  
+    <div class="overlay">
         <div class="row">
             <div class="column left">
-            <img id="panelImg" src="/poLogin.png"/>
+                <img id="panelImg" src="/poLogin.png" />
             </div>
             <div class="column right">
                 <form id="createPollForm" class="form-horizontal">
                     <div class="form-group">
                         <label for="pollName" class="control-label col-sm-2">Poll Name</label>
                         <div class="col-sm-10">
-                            <input type="text" id="pollName" class="form-control"/>
+                            <input type="text" class=" pollName form-control" />
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="spaceName" class="control-label col-sm-2">Space </label>
                         <div class="col-sm-10">
-                            <input list="spaceList" id="spaceName" class="form-control"/>
+                            <input list="spaceList" id="spaceName" class="form-control" />
                             <datalist id="spaceList">
                                 {{>spaceList}}
                             </datalist>
@@ -24,11 +24,21 @@
                     <div class="form-group">
                         <label for="pollQuestion" class="control-label col-sm-2">Question</label>
                         <div class="col-sm-10">
-                            <input type="text" id="pollQuestion" class="form-control"/>
+                            <input type="text" class=" pollQuestion form-control" />
                         </div>
                     </div>
-                    {{> option}}
-                    <button type="submit" id="createPoll">Create</button>
+                    <div class="form-group">
+                        <label for="options" class="control-label col-sm-2">Options</label>
+                        {{> option}}
+                    </div>
+                    {{> Template.dynamic template=option2}} 
+                    {{> Template.dynamic template=option3}} 
+                    {{> Template.dynamic template=option4}} 
+                    {{> Template.dynamic template=option5}}
+                    <a id="addOption">
+                        <i class='plusShape'></i>
+                    </a>
+                    <button type="submit" id="createPoll" class="active-button">Create</button>
                 </form>
             </div>
         </div>
@@ -37,21 +47,14 @@
 
 <template name="option">
     <div class="form-group">
-        <label for="options" class="control-label col-sm-2">Options</label>
-        <div class="col-sm-10">
+        <div class=" col-sm-10">
             <input type="text" class="form-control options" />
-        </div>
-        <div class="col-sm-10">
-            <input type="text" class=" form-control options" />
-            <a id="addOption">
-                <i class='plusShape'></i>
-            </a>
         </div>
     </div>
 </template>
 
 <template name="spaceList">
-    <option value = "Room 1"></option>
-    <option value = "Room 2"></option>
+    <option value="Test Room 1"></option>
+    <option value="Test Room 2"></option>
 
 </template>

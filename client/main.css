@@ -54,7 +54,7 @@ header {
     display: table-cell; /* Make elements inside the container behave like table cells */
 }
 
-button{
+#addButton{
   -webkit-box-sizing: content-box;
   -moz-box-sizing: content-box;
   box-sizing: content-box;
@@ -78,7 +78,7 @@ button{
   transition: background-color 0.3s cubic-bezier(0, 0, 0, 0), color 0.3s cubic-bezier(0, 0, 0, 0), width 0.3s cubic-bezier(0, 0, 0, 0), border-width 0.3s cubic-bezier(0, 0, 0, 0), border-color 0.3s cubic-bezier(0, 0, 0, 0);
 }
 
-button:hover {
+#addButton:hover {
   color: rgba(255,255,255,1);
   background: rgb(105, 159, 70);
 }
@@ -278,13 +278,36 @@ header .hide-completed {
   margin-bottom: 1rem;
 }
 
+.card-item-wide {
+  min-height: 100px;
+  width: 90%;
+  margin: 35px 30px;
+  background: #fff;
+  padding: 15px;
+  height: 100%;
+  overflow: hidden;
+  box-shadow: 0 3px 5px rgba(0,0,0,0.12), 0 3px 5px rgba(0,0,0,0.24);
+  transition: box-shadow 0.3s ease-in-out;
+}
+
 .card{
   height: 100%;
   overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  transition: box-shadow 0.3s ease-in-out;
+}
+.card:hover{
+      box-shadow: 0px 5px 25px 0px rgba(0,0,0,0.4);
+}
+
+.vertical {
+  display: inline-flex;
+  vertical-align: top;
+  width:100%;
 }
 
 .inactive-card-left{
-  display: flex;
+  display: block;
   align-items: center;
   justify-content: center;
   margin: 0;
@@ -294,9 +317,11 @@ header .hide-completed {
   padding: 10px 0 0 10px;
   background-color:#d9d9d9;
   color: #fff;
+  text-align: center;
+  position: relative;
 }
 .active-card-left{ 
-  display: flex;
+  display: block;
   align-items: center;
   justify-content: center;
   margin: 0;
@@ -306,11 +331,32 @@ header .hide-completed {
   padding: 10px 0 0 10px;  
   background-color: #79c143;
   color: #fff;
+  text-align: center;
+  position: relative;
 }
 .card-right { 
   width: 70%;
   height: 100%;  
   padding: 10px 10px 10px 170px;
+}
+
+.option{
+  position:absolute;
+  text-align: center;
+  left: 30%;
+  bottom: 2em;
+}
+.panel-poll-percent {
+  position:absolute;
+  left: 25%;
+  top:25%;
+  font-size: 30px;
+}
+
+.panel-poll-title {
+  font-size: 20px;
+  width: 100%;
+  margin: 10px 0;
 }
 
 .header-bar{
@@ -326,6 +372,120 @@ header .hide-completed {
 .header-title {
   font-size: 3em;
 }
+
+.poll-question {
+  font-size: 1.3em;
+}
+.responses-list {
+  width: 60%;
+  text-align: center;
+}
+
+.responses{
+  display: inline-grid;
+  vertical-align: top;
+  cursor: pointer;
+  padding-right: 20px;
+}
+
+.progress.--vr {
+  position: relative;
+  width: 30px;
+  height: 150px;
+  float:left;
+  margin-right:5px;
+  background-color: #d9d9d9;
+  border-radius: 6px;
+}
+
+.progress.--vr .progress-bar {
+    width: 100%;
+    top: auto;
+    bottom: 0;
+    position: absolute;
+    background-color: #79c143;
+    border-radius:6px;
+}
+
+.option-char {
+  padding: 10px;
+}
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+td {
+  font-size: 20px;
+  padding: 10px;
+}
+td:first-child{
+  text-align: right;
+}
+td:last-child{
+  width: 70%;
+  text-align: right;
+  padding-right: 20px;
+}
+tr:nth-child(even) {background-color: #f2f2f2;}
+
+.fa-trash{
+  color: red;
+}
+.fa-trash:hover {
+cursor: pointer;
+}
+
+.poll-percentage-number, .total-responses-number {
+  font-size: 3em;
+  color:  #79c143;
+}
+
+.poll-highest-option {
+  height: 20px;
+  margin-bottom: 20px;
+}
+
+.active-button {
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  cursor: pointer;
+  margin: 0 auto;
+  border: 0px solid rgb(121,193,67);
+  -webkit-border-radius: 40px;
+  border-radius: 10px;
+  color: rgba(255,255,255,1);
+  text-align: center;
+  -o-text-overflow: clip;
+  text-overflow: clip;
+  letter-spacing: 1px;
+  background: rgb(121, 193, 67);
+  -webkit-transition: background-color 0.3s cubic-bezier(0, 0, 0, 0), color 0.3s cubic-bezier(0, 0, 0, 0), width 0.3s cubic-bezier(0, 0, 0, 0), border-width 0.3s cubic-bezier(0, 0, 0, 0), border-color 0.3s cubic-bezier(0, 0, 0, 0);
+  -moz-transition: background-color 0.3s cubic-bezier(0, 0, 0, 0), color 0.3s cubic-bezier(0, 0, 0, 0), width 0.3s cubic-bezier(0, 0, 0, 0), border-width 0.3s cubic-bezier(0, 0, 0, 0), border-color 0.3s cubic-bezier(0, 0, 0, 0);
+  -o-transition: background-color 0.3s cubic-bezier(0, 0, 0, 0), color 0.3s cubic-bezier(0, 0, 0, 0), width 0.3s cubic-bezier(0, 0, 0, 0), border-width 0.3s cubic-bezier(0, 0, 0, 0), border-color 0.3s cubic-bezier(0, 0, 0, 0);
+  transition: background-color 0.3s cubic-bezier(0, 0, 0, 0), color 0.3s cubic-bezier(0, 0, 0, 0), width 0.3s cubic-bezier(0, 0, 0, 0), border-width 0.3s cubic-bezier(0, 0, 0, 0), border-color 0.3s cubic-bezier(0, 0, 0, 0);
+}
+.cancel-button {
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  cursor: pointer;
+  margin: 0 auto;
+  border: 0px solid grey;
+  -webkit-border-radius: 40px;
+  border-radius: 10px;
+  color: rgba(255,255,255,1);
+  text-align: center;
+  -o-text-overflow: clip;
+  text-overflow: clip;
+  letter-spacing: 1px;
+  background: gainsboro;
+}
+
+.fa-envelope{
+  padding: 0 10px;
+}
+
 
 
 

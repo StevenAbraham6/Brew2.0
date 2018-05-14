@@ -8,20 +8,22 @@
   <div class="overlay">
     <div class="card-grid">
       {{#each userPoll in userPolls}}
-      <div class="card-item">
+      <div class="card-item" pollId ="{{userPoll.pollId}}">
         <div class="card">
           {{#if isActive userPoll.pollState}}
             <div class="active-card-left">
-             <h1>{{percentage userPoll.questions}}%</h1>
+             <div class="panel-poll-percent">{{percentage userPoll.questions}}%</div>
+             <div class="option">{{highestOption userPoll.questions}}</div>
             </div>
             {{else}}
             <div class="inactive-card-left">
-              <h1>{{percentage userPoll.questions}}%</h1>
+              <div class="panel-poll-percent">{{percentage userPoll.questions}}%</div>
+              <div class="option">{{highestOption userPoll.questions}}</div>              
             </div>
           {{/if}}
           <div class="card-right">
-            <h2>{{userPoll.pollTitle}} </h2>
-            <p>{{spaceName userPoll.pollTargetRoom}} </p>   
+            <div class="panel-poll-title">{{userPoll.pollTitle}} </div>
+            <p>{{userPoll.pollTargetRoomName}} </p>   
             <p>Created at {{retrieveDate userPoll.createdAt}}</p>   
             <p>Responses {{totalResponse userPoll.questions}}</p>
           </div>
