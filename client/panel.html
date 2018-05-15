@@ -1,36 +1,59 @@
 <template name="panel">
   <div class="header-bar">
-    <div class= "header-title">Hi {{name}}</div>
+    <div class="header-title">Hi {{name}}</div>
     <a class="float">
       <i class="fa fa-plus my-float"></i>
     </a>
   </div>
   <div class="overlay">
+    {{#if userPollsExist}}
     <div class="card-grid">
       {{#each userPoll in userPolls}}
-      <div class="card-item" pollId ="{{userPoll.pollId}}">
+      <div class="card-item" pollId="{{userPoll.pollId}}">
         <div class="card">
-          {{#if isActive userPoll.pollState}}
-            <div class="active-card-left">
-             <div class="panel-poll-percent">{{percentage userPoll.questions}}%</div>
-             <div class="option">{{highestOption userPoll.questions}}</div>
-            </div>
-            {{else}}
-            <div class="inactive-card-left">
-              <div class="panel-poll-percent">{{percentage userPoll.questions}}%</div>
-              <div class="option">{{highestOption userPoll.questions}}</div>              
-            </div>
+          {{#if userPollisPoll userPoll}} {{#if isActive userPoll.pollState}}
+          <div class="active-card-left">
+            <div class="panel-poll-percent">{{percentage userPoll.questions}}%</div>
+            <div class="option">{{highestOption userPoll.questions}}</div>
+          </div>
+          {{else}}
+          <div class="inactive-card-left">
+            <div class="panel-poll-percent">{{percentage userPoll.questions}}%</div>
+            <div class="option">{{highestOption userPoll.questions}}</div>
+          </div>
           {{/if}}
           <div class="card-right">
-            <div class="panel-poll-title">{{userPoll.pollTitle}} </div>
-            <p>{{userPoll.pollTargetRoomName}} </p>   
-            <p>Created at {{retrieveDate userPoll.createdAt}}</p>   
-            <p>Responses {{totalResponse userPoll.questions}}</p>
+            <div class="panel-poll-title no-overflow-dot">{{userPoll.pollTitle}} </div>
+            <div class="space no-overflow-dot">{{userPoll.pollType}}</div>
+            <div class="space no-overflow-dot">{{userPoll.pollTargetRoomName}}</div>
+            <div class="space no-overflow-dot">Created at {{retrieveDate userPoll.createdAt}} </div>
+            <div class="space no-overflow-dot">Responses {{totalResponse userPoll.questions}}</div>
           </div>
+          {{else}} {{#if isActive userPoll.pollState}}
+          <div class="active-card-left">
+            <div class="panel-poll-percent">{{totalResponseSurvey userPoll.questions}}</div>
+            <div class="option">Users Completed</div>
+          </div>
+          {{else}}
+          <div class="inactive-card-left">
+            <div class="panel-poll-percent">{{totalResponseSurvey userPoll.questions}}</div>
+            <div class="option">Users Completed</div>
+          </div>
+          {{/if}}
+          <div class="card-right">
+            <div class="panel-poll-title no-overflow-dot">{{userPoll.pollTitle}} </div>
+            <div class="space no-overflow-dot">{{userPoll.pollType}}</div>
+            <div class="space no-overflow-dot">{{userPoll.pollTargetRoomName}}</div>
+            <div class="space no-overflow-dot">Created at {{retrieveDate userPoll.createdAt}} </div>
+            <div class="space no-overflow-dot">Responses {{totalResponse userPoll.questions}}</div>
+          </div>
+          {{/if}}
         </div>
       </div>
       {{/each}}
     </div>
+    {{else}}
+    <div class="no-polls">Click '+' button to create a Poll/Survey</div>
+    {{/if}}
   </div>
 </template>
-

@@ -1,6 +1,6 @@
 /* CSS declarations go here */
 body {
-  font-family: sans-serif;
+  font-family:'CiscoSansTTLight' ;
 }
 
 .container {
@@ -9,9 +9,6 @@ body {
   min-height: 100%;
 
   background-color: #3D3E40;
-  /* background-image: linear-gradient(to bottom, #315481, #918e82 100%); */
-  /* background-attachment: fixed; */
-
   position: absolute;
   top: 0;
   bottom: 0;
@@ -22,7 +19,6 @@ body {
   margin: 0;
 
   font-size: 14px;
-  /* background: white; */
 }
 .col-container{
   max-width: 600px;
@@ -263,6 +259,12 @@ header .hide-completed {
   top:0;bottom:0;left:0;right:0
 }
 
+.no-polls{
+  color: gray;
+  font-size: 2em;
+  padding: 30px;
+  text-align: center;
+}
 .card-grid {
   margin: 30px 10px 10px 30px;
   display: flex;
@@ -335,21 +337,29 @@ header .hide-completed {
   position: relative;
 }
 .card-right { 
-  width: 70%;
   height: 100%;  
   padding: 10px 10px 10px 170px;
 }
+.space {
+  margin:10px;
+}
+.no-overflow-dot {
+  text-overflow: ellipsis;
+  overflow: hidden; 
+  white-space: nowrap;
+}
 
 .option{
+  width: 100%;
   position:absolute;
   text-align: center;
-  left: 30%;
   bottom: 2em;
 }
 .panel-poll-percent {
+  width: 100%;
   position:absolute;
-  left: 25%;
-  top:25%;
+  top:30%;
+  text-align: center;
   font-size: 30px;
 }
 
@@ -430,10 +440,16 @@ tr:nth-child(even) {background-color: #f2f2f2;}
 
 .fa-trash{
   color: red;
+  float: right;
 }
 .fa-trash:hover {
 cursor: pointer;
 }
+.fa-envelope{
+  float: right;
+  padding: 0 10px;
+}
+
 
 .poll-percentage-number, .total-responses-number {
   font-size: 3em;
@@ -482,11 +498,27 @@ cursor: pointer;
   background: gainsboro;
 }
 
-.fa-envelope{
-  padding: 0 10px;
+nav {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
 }
 
-
-
-
-
+nav ul {
+    list-style: none;
+    text-align: center;
+    overflow: hidden;
+}
+nav ul li {
+      display: inline-block;
+      margin: 0 -4px;
+      padding: 5px 0;
+}
+nav ul li a {
+    padding: 5px 20px;
+    text-decoration: none;
+}
+nav ul li a:hover,nav ul li a:active {
+    background: gray-dark;
+}
+  
