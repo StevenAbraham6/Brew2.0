@@ -3,7 +3,7 @@ body {
   font-family:'CiscoSansTTLight' ;
 }
 
-.container {
+.login-container {
   width: 100%;
   margin: 0 auto;
   min-height: 100%;
@@ -20,10 +20,6 @@ body {
 
   font-size: 14px;
 }
-.col-container{
-  max-width: 600px;
-  margin-left: 25%;
-}
 
 header {
   background: #d2edf4;
@@ -39,15 +35,22 @@ header {
   box-shadow: none;
   border-radius: 0px;
 }
-
-
 .col-container {
-    display: table; /* Make the container element behave like a table */
-    width: 100%; /* Set full-width to expand the whole page */
+  display: inline-flex;
+  width: 100%;
+  justify-content: center;
+  padding:100px 0 0;
+}
+.col-add-login {
+  padding: 80px;
+}
+.col-webex-login {
+  padding: 40px;
 }
 
-.col {
-    display: table-cell; /* Make elements inside the container behave like table cells */
+.sign-in-button{
+  width: 100%;
+  text-align: center;
 }
 
 #addButton{
@@ -190,7 +193,10 @@ header .hide-completed {
       left:0px;
       z-index:-100;
       overflow-y: scroll;
-      padding-top: 70px
+     
+}
+ .panel {
+   padding-top: 70px
 }
 
 @media screen and (max-width: 600px) {
@@ -283,10 +289,9 @@ header .hide-completed {
 .card-item-wide {
   min-height: 100px;
   width: 90%;
-  margin: 35px 30px;
+  margin-bottom:30px;
   background: #fff;
   padding: 15px;
-  height: 100%;
   overflow: hidden;
   box-shadow: 0 3px 5px rgba(0,0,0,0.12), 0 3px 5px rgba(0,0,0,0.24);
   transition: box-shadow 0.3s ease-in-out;
@@ -306,6 +311,9 @@ header .hide-completed {
   display: inline-flex;
   vertical-align: top;
   width:100%;
+}
+.vertical .survey {
+  width:30%
 }
 
 .inactive-card-left{
@@ -341,7 +349,8 @@ header .hide-completed {
   padding: 10px 10px 10px 170px;
 }
 .space {
-  margin:10px;
+  margin:7px;
+  font-size: 15px;
 }
 .no-overflow-dot {
   text-overflow: ellipsis;
@@ -360,11 +369,11 @@ header .hide-completed {
   position:absolute;
   top:30%;
   text-align: center;
-  font-size: 30px;
+  font-size: 40px;
 }
 
 .panel-poll-title {
-  font-size: 20px;
+  font-size: 30px;
   width: 100%;
   margin: 10px 0;
 }
@@ -383,11 +392,24 @@ header .hide-completed {
   font-size: 3em;
 }
 
+.poll-title {
+ font-size: 40px;
+}
+
 .poll-question {
-  font-size: 1.3em;
+  padding-top:10px;
+  font-size: 20px;
+}
+.poll-option{
+  padding-top: 10px;
+  padding-left: 20px;
 }
 .responses-list {
-  width: 60%;
+  width: 40%;
+  text-align: center;
+}
+.poll-responses-list {
+   width: 60%;
   text-align: center;
 }
 
@@ -396,6 +418,14 @@ header .hide-completed {
   vertical-align: top;
   cursor: pointer;
   padding-right: 20px;
+}
+
+.survey-question{
+  font-size: 20px;
+}
+.survey-options{
+  padding-top: 10px;
+  padding-left: 20px;
 }
 
 .progress.--vr {
@@ -424,15 +454,19 @@ table {
     border-collapse: collapse;
     width: 100%;
 }
+
 td {
   font-size: 20px;
   padding: 10px;
+  
 }
 td:first-child{
+  padding-left: 40px;
   text-align: right;
+  width:1%;
+  white-space:nowrap;
 }
 td:last-child{
-  width: 70%;
   text-align: right;
   padding-right: 20px;
 }
@@ -457,6 +491,8 @@ cursor: pointer;
 }
 
 .poll-highest-option {
+  font-size: 20px;
+  padding-left: 10px;
   height: 20px;
   margin-bottom: 20px;
 }
@@ -495,30 +531,103 @@ cursor: pointer;
   -o-text-overflow: clip;
   text-overflow: clip;
   letter-spacing: 1px;
-  background: gainsboro;
+  background: lightgray;
+}
+.cancel-button:active{
+  background: rgb(121, 193, 67);
 }
 
-nav {
+.page-navigation {
   margin: 0;
   padding: 0;
   overflow: hidden;
 }
 
-nav ul {
+.page-navigation ul {
     list-style: none;
-    text-align: center;
     overflow: hidden;
 }
-nav ul li {
+.page-navigation ul li {
       display: inline-block;
       margin: 0 -4px;
       padding: 5px 0;
+      border-bottom: none;
 }
-nav ul li a {
-    padding: 5px 20px;
+.page-navigation ul li a {
+    padding: 5px 10px;
     text-decoration: none;
+    cursor: pointer;
 }
-nav ul li a:hover,nav ul li a:active {
+.page-navigation ul li a:hover,.page-navigation ul li a:active {
     background: gray-dark;
 }
-  
+
+.card-fixed{
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+.content {
+  width: 100%;
+}
+.bk-btn {
+  position: fixed;
+  margin: 10px;
+  height: 52px;
+  width: 52px;
+  background-color:gray;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.bk-btn .bk-btn-triangle {
+    position: relative;
+    top: 13px;
+    left: 13px;
+    width: 0; 
+    height: 0; 
+    border-top: 13px solid transparent;
+    border-bottom: 13px solid transparent; 
+    border-right: 13px solid white; 
+}
+  .bk-btn .bk-btn-bar {
+    position: relative;
+    background-color: white;
+    height: 13px;
+    width: 13px;
+    top: -6px;
+    left: 22.88px;
+}
+
+#filler{
+min-height: 180px;
+width:100%;
+}
+
+.validateBtn{
+width: 50px;
+height: 25px;
+margin-left:257px;
+}
+
+.QBtn{
+width: 50px;
+height: 25px;
+margin-left:480px;
+margin-top:25px;
+margin-bottom:5px;
+}
+
+.optionBtn{
+width: 25px;
+height: 25px;
+}
+
+.optionBtn.btn-danger.btn-remove{
+width: 25px;
+height: 25px;
+}
+
+.poll-form {
+  width: 100%;
+}
+

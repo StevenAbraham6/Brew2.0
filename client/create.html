@@ -1,60 +1,299 @@
-<template name="create">
-    <div class="overlay">
-        <div class="row">
-            <div class="column left">
-                <img id="panelImg" src="/poLogin.png" />
+<template name='create'>
+    <div class="container-fluid overlay">
+        <section class="container">
+            <div class="container-page">
+                <div class="row">
+                    <div class="poll-form">
+                        {{>form}}
+                    </div>
+
+                </div>
             </div>
-            <div class="column right">
-                <form id="createPollForm" class="form-horizontal">
-                    <div class="form-group">
-                        <label for="pollName" class="control-label col-sm-2">Poll Name</label>
-                        <div class="col-sm-10">
-                            <input type="text" class=" pollName form-control" />
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="spaceName" class="control-label col-sm-2">Space </label>
-                        <div class="col-sm-10">
-                            <input list="spaceList" id="spaceName" class="form-control" />
-                            <datalist id="spaceList">
-                                {{>spaceList}}
-                            </datalist>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="pollQuestion" class="control-label col-sm-2">Question</label>
-                        <div class="col-sm-10">
-                            <input type="text" class=" pollQuestion form-control" />
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="options" class="control-label col-sm-2">Options</label>
-                        {{> option}}
-                    </div>
-                    {{> Template.dynamic template=option2}} 
-                    {{> Template.dynamic template=option3}} 
-                    {{> Template.dynamic template=option4}} 
-                    {{> Template.dynamic template=option5}}
-                    <a id="addOption">
-                        <i class='plusShape'></i>
-                    </a>
-                    <button type="submit" id="createPoll" class="active-button">Create</button>
-                </form>
-            </div>
-        </div>
+        </section>
     </div>
 </template>
 
-<template name="option">
+<template name='form'>
+    <form role="form" class="CreateForm" autocomplete="off">
+        <div class="form-group">
+            {{>tab}}
+            <!--  {{>pollSlider}}-->
+        </div>
+        <div class="card-item-wide">
+        {{> Template.dynamic template=form}}
+        </div>
+    </form>
+</template>
+
+<!-- <template name='pollSlider'>
+    <div class="slider1">Poll
+        <label class="switch">
+            <input type="checkbox" class="check1">
+            <span class="slider round"></span>
+        </label>
+        Survey
+
+    </div>
+</template> -->
+
+<template name='tab'>
+    <ul class="nav nav-pills">
+        <li data-template="Poll" role="presentation" class="active" onclick="history.go(0)">
+            <a href="#">Poll</a>
+        </li>
+        <li data-template="Survey" role="presentation">
+            <a href="#">Survey</a>
+        </li>
+        <li data-template="Feedback" role="presentation">
+            <a href="#">Feedback</a>
+        </li>
+    </ul>
+</template>
+
+
+<template name="Feedback">
     <div class="form-group">
-        <div class=" col-sm-10">
-            <input type="text" class="form-control options" />
+        <label for="pollName" class="control-label">Feedback HashTag</label>
+        <div class="poll-name-input">
+            <input type="text" class=" pollName form-control" /> {{>validateBtn}}
+        </div>
+    </div>
+    <div class="question-group multiple-question-group" data-max=6>
+        {{>question}}
+        <div class="question-group input-group">
+            {{>optionF1}}
+        </div>
+        <div class="feedbackBtn">
+            {{>feedbackBtn}}
         </div>
     </div>
 </template>
 
-<template name="spaceList">
-    <option value="Test Room 1"></option>
-    <option value="Test Room 2"></option>
+<template name='Survey'>
+    <div class="form-group">
+        <label for="pollName" class="control-label">Survey Name</label>
+        <div class="poll-name-input">
+            <input type="text" class=" pollName form-control" />
+        </div>
+    </div>
+    {{>spaceDrop}}
+    <div class="question-container" data-max=5>
+        {{>question1}} {{>question2}}
+        <div class="surveyBtn">
+            {{>surveyBtn}}
+        </div>
+    </div>
 
 </template>
+
+
+<template name='Poll'>
+    <div class="form-group">
+        <label for="pollName" class="control-label">Poll Name</label>
+        <div class="poll-name-input">
+            <input type="text" class=" pollName form-control" />
+        </div>
+    </div>
+    {{>spaceDrop}}
+    <div class="question-group multiple-question-group" data-max=6>
+        {{>question}}
+        <div class="question-group input-group ">
+            {{>option1}}
+        </div>
+    </div>
+    <div class="pollBtn">
+        {{>pollBtn}}
+    </div>
+</template>
+
+<template name='spaceDrop'>
+
+    <div class="form-group Space">
+        <label>Space</label>
+        <select name="select" class="form-control spaceSelect" id="spaceSelect" data-live-search="true">
+            {{#each hello.redata}}
+            <option value="{{id}}" name="{{title}}">{{title}}</option>
+            {{/each}}
+        </select>
+
+    </div>
+</template>
+
+
+
+<template name='question'>
+    <div class="form-group">
+        <label>Question</label>
+        <input type="text" name="squestion1" class="form-control squestion1" id="squestion1" value="">
+    </div>
+</template>
+
+
+<template name='option1'>
+    <div class="form-group multiple-form-group" data-max=5>
+        <div class="form-group input-group">
+            <label class="form-option">Option 1</label>
+            <input type="text" id="option" name="multiple[]" class="form-control options" value="">
+        </div>
+        <div class="form-group input-group">
+            <label class="form-option">Option 2</label>
+            <input type="text" name="multiple[]" class="form-control options" id="option" value="">
+            <span class="input-group-btn">
+                <button type="button" class="optionBtn btn-default btn-add">+
+                </button>
+            </span>
+        </div>
+    </div>
+</template>
+
+
+<template name='optionF1'>
+    <div class="form-group multiple-form-group" data-max=5>
+        <div class="form-group input-group">
+            <label class="form-option">Option 1</label>
+            <input type="text" id="option" name="multiple[]" class="form-control options" value="">
+        </div>
+        <div class="form-group input-group">
+            <label class="form-option">Option 2</label>
+            <input type="text" name="multiple[]" class="form-control options" id="option" value="">
+            <span class="input-group-btn">
+                <button type="button" class="optionBtn btn-default F-btn-add">+
+                </button>
+            </span>
+        </div>
+    </div>
+</template>
+
+
+<template name='addOption'>
+    <div class="form-group multiple-form-group" data-max=4>
+        <div class="form-group input-group">
+            <label>Option </label>
+            <input type="text" name="multiple[]" class="form-control options" id="option" value="">
+            <span class="input-group-btn">
+                <button type="button" class="optionBtn btn-default btn-add">+
+                </button>
+            </span>
+        </div>
+
+    </div>
+</template>
+
+<template name='addFOption'>
+    <div class="form-group multiple-form-group" data-max=4>
+        <div class="form-group input-group">
+            <label>Option </label>
+            <input type="text" name="multiple[]" class="form-control options" id="option" value="">
+            <span class="input-group-btn">
+                <button type="button" class="optionBtn btn-default F-btn-add">+
+                </button>
+            </span>
+        </div>
+
+    </div>
+</template>
+
+<template name='addQuestion'>
+    <div class="q-group multiple-question-group data-max=2">
+        <div class="form-group input-group">
+            <label>Question </label>
+            <input type="text" name="squestion1" class="form-control squestion1" id="squestion1" value="">
+        </div>
+        <div class="question-group">
+            <div class="form-group multiple-form-group" data-max=2>
+                <div class="form-group input-group">
+                    <label>Option 1</label>
+                    <input type="text" id="option" name="multiple[]" class="form-control options" value="">
+                </div>
+            </div>
+            <div class="form-group multiple-form-group" data-max=4>
+                <div class="form-group input-group">
+                    <label>Option </label>
+                    <input type="text" name="multiple[]" class="form-control options" id="" value="">
+                    <span class="input-group-btn">
+                        <button type="button" class="optionBtn btn-default btn-add" uniqid="{{uniqid}}" value="{{value}}">+
+                        </button>
+                    </span>
+                </div>
+
+            </div>
+        </div>
+        <span class="Q-input-group-btn">
+            <button type="button" class="Btn btn-default Q-btn-add">+
+            </button>
+        </span>
+    </div>
+
+</template>
+
+<template name='question1'>
+    <div class="q-group multiple-question-group data-max=2">
+        <div class="jumbotron">
+
+            <div class="form-group input-group">
+                <label class="form-question">Question 1</label>
+                <input type="text" name="squestion1" class="form-control squestion1" id="squestion1" value="">
+            </div>
+            <div class="question-group">
+                {{>option1}}
+
+
+            </div>
+        </div>
+    </div>
+</template>
+
+<template name='question2'>
+    <div class="q-group multiple-question-group data-max=1">
+        <div class="jumbotron data-max=1">
+
+            <div class="form-group input-group">
+                <label class="form-question">Question 2</label>
+                <input type="text" name="squestion1" class="form-control squestion1" id="squestion1" value="">
+            </div>
+            <div class="question-group" id="question-group" name="question-group">
+                {{>option1}}
+
+            </div>
+            <span class="Q-input-group-btn">
+                <button type="button" class="QBtn btn-default Q-btn-add">+
+                </button>
+            </span>
+        </div>
+    </div>
+
+</template>
+
+
+
+<template name='pollBtn'>
+    <div class="submitform form-group">
+        <button type="submit" class="pollBtn btn-default" value="Create">Create
+        </button>
+    </div>
+</template>
+
+<template name='surveyBtn'>
+    <div class="submitform form-group">
+        <button type="submit" class="surveyBtn btn-default" value="Create">Create
+        </button>
+    </div>
+</template>
+
+<template name='feedbackBtn'>
+    <div class="submitform form-group">
+        <button type="submit" class="feedbackBtn btn-default" value="Create">Create
+        </button>
+    </div>
+</template>
+
+<template name='validateBtn'>
+    <span class="validateBtn">
+        <button type="button" class="validateBtn btn-default">Check
+        </button>
+    </span>
+</template>
+
+
+
+

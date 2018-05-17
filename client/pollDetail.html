@@ -1,32 +1,40 @@
 <template name="pollDetail">
   <div class="overlay">
+  <div class="bk-btn">
+    <div class="bk-btn-triangle"></div>
+    <div class="bk-btn-bar"></div>
+  </div>
     <div class="card-grid">
       {{#each poll in selectedPoll}} 
       {{#if pollisSurvey poll}} 
-
-      <div class="card-item-wide card-fixed">
+      <div class="card-fixed card-item-wide">
         <div class="survey-title">
-          <h1>{{poll.pollTitle}} 
+          <div class="poll-title">{{poll.pollTitle}} 
             <i class="fa fa-trash" style="font-size:25px;"></i>
             <i class="fa fa-envelope" style="font-size:27px"></i>
-          </h1>
-         
+          </div>
         </div>
+
         <nav class="page-navigation">
           <ul>
             <li >
-              <a href="#survey-details">Survey Details</a>
+              <a href="#survey-details">
+                <button type="button" class="nav-button cancel-button">Survey Details</button>
+              </a>
+             
             </li>
             {{#each question in pollQuestionsNav poll}}
             <li>
-              <a href="#{{question.section}}">{{question.num}}</a>
+              <a href="#{{question.section}}">
+                <button type="button" class="nav-button cancel-button">{{question.num}}</button>
+              </a>
             </li>
            {{/each}}
           </ul>
         </nav>
         </div>
-        
-        <section id="survey-details" class="card-item-wide">
+        <!-- <div id="filler">&nbsp;</div> -->
+        <section id="section0" class="card-item-wide">
             <table>
               <tr>
                 <td>Status : </td>
@@ -55,11 +63,13 @@
 
        {{#each question in pollQuestionsNav poll}}
        <section id="{{question.section}}" class="card-item-wide">
-         <div class="survey-question">{{question.ques.text}}</div>
-         {{#each option in options question.ques}}
-          <div class="survey-options">{{option.optionChar}}. {{option.optionText}}</div>
-          {{/each}}
         <div class="vertical">
+          <div class="survey">
+            <div class="survey-question">{{question.ques.text}}</div>
+            {{#each option in options question.ques}}
+              <div class="survey-options">{{option.optionChar}}. {{option.optionText}}</div>
+            {{/each}}
+          </div>
           <div class="responses-list">
             {{#each response in responsesCalc question.ques}}
             <div class="responses">
@@ -78,52 +88,56 @@
           </div>
 
           <div class="percentages-list">
-            {{#each response in responsesCalc question.ques}}
-              {{#if hoverOption response.optionChar}}
-              <div class="percentages">
-                {{#if response.percentage}}
-                <div class="poll-percentage">
-                  <div class="poll-percentage-number">{{response.percentage}}%</div>
-                  <div class="poll-highest-option"></div>
+            {{#if hoverQuestion question.num}}
+              {{#each response in responsesCalc question.ques}}
+               {{#if hoverOption response.optionChar}}
+                <div class="percentages">
+                  {{#if response.percentage}}
+                  <div class="poll-percentage">
+                    <div class="poll-percentage-number">{{response.percentage}}%</div>
+                    <div class="poll-highest-option"></div>
+                  </div>
+                  {{else}}
+                  <div class="poll-percentage">
+                    <div class="poll-percentage-number">0%</div>
+                    <div class="poll-highest-option"></div>
+                  </div>
+                  {{/if}}
+                  <div class="total-responses">
+                    <div class="total-responses-number">{{response.total}}</div>
+                    Responses
+                  </div>
                 </div>
-                {{else}}
-                <div class="poll-percentage">
-                  <div class="poll-percentage-number">0%</div>
-                  <div class="poll-highest-option"></div>
-                </div>
-                {{/if}}
-                <div class="total-responses">
-                  <div class="total-responses-number">{{response.total}}</div>
-                  Responses
-                </div>
-              </div>
-              {{/if}} 
-            {{/each}}
+                 {{/if}}
+               {{/each}}
+               {{/if}}
 
-            {{#each highestPoll in highestPollPercentage question.ques }} 
-              {{#if defaultHighestPercentage}}
+              {{#if showhighestPoll question.num}}
+              {{#each highestPoll in highestPollPercentage question.ques}}
               <div class="percentages">
                 {{#if highestPoll.percentage}}
-                <div class="poll-percentage">
+                <div class="poll-percentage highest">
                   <div class="poll-percentage-number">{{highestPoll.percentage}}%</div>
                   <div class="poll-highest-option">{{highestPoll.optionChar}}. {{highestPoll.option}}</div>
                 </div>
                 {{else}}
-                <div class="poll-percentage">
+                <div class="poll-percentage highest">
                   <div class="poll-percentage-number">0%</div>
                   <div class="poll-highest-option"></div>
                 </div>
                 {{/if}}
-                <div class="total-responses">
+                <div class="total-responses highest">
                   <div class="total-responses-number">{{highestPoll.totalResponse}}</div>
                   Responses
                 </div>
               </div>
-              {{/if}} 
-            {{/each}}
+               {{/each}}
+              {{/if}}
+
           </div>
         </div>
        </section>
+
         {{/each}}
       
       {{else}}
@@ -143,7 +157,7 @@
 
       <div class="card-item-wide">
         <div class="vertical">
-          <div class="responses-list">
+          <div class="poll-responses-list">
             {{#each response in responsesCalc question.ques}}
             <div class="responses">
               <div class="progress --vr">
@@ -159,8 +173,7 @@
           </div>
 
           <div class="percentages-list">
-            {{#each response in responsesCalc question.ques}} 
-            {{#if hoverOption response.optionChar}}
+            {{#if hoverQuestion question.num}} {{#each response in responsesCalc question.ques}} {{#if hoverOption response.optionChar}}
             <div class="percentages">
               {{#if response.percentage}}
               <div class="poll-percentage">
@@ -175,34 +188,30 @@
               {{/if}}
               <div class="total-responses">
                 <div class="total-responses-number">{{response.total}}</div>
-                Responses
+                  Responses
               </div>
             </div>
-            {{/if}} 
-            {{/each}} 
-            
-            {{#each highestPoll in highestPollPercentage question.ques }} 
-              {{#if defaultHighestPercentage}}
-              <div class="percentages">
-                {{#if highestPoll.percentage}}
-                <div class="poll-percentage">
-                  <div class="poll-percentage-number">{{highestPoll.percentage}}%</div>
-                  <div class="poll-highest-option">{{highestPoll.optionChar}}. {{highestPoll.option}}</div>
-                </div>
-                {{else}}
-                <div class="poll-percentage">
-                  <div class="poll-percentage-number">0%</div>
-                  <div class="poll-highest-option"></div>
-                </div>
-                {{/if}}
-              <div class="total-responses">
+            {{/if}} {{/each}} {{/if}} {{#if showhighestPoll question.num}} {{#each highestPoll in highestPollPercentage question.ques}}
+            <div class="percentages">
+              {{#if highestPoll.percentage}}
+              <div class="poll-percentage highest">
+                <div class="poll-percentage-number">{{highestPoll.percentage}}%</div>
+                <div class="poll-highest-option">{{highestPoll.optionChar}}. {{highestPoll.option}}</div>
+              </div>
+              {{else}}
+              <div class="poll-percentage highest">
+                <div class="poll-percentage-number">0%</div>
+                <div class="poll-highest-option"></div>
+              </div>
+              {{/if}}
+              <div class="total-responses highest">
                 <div class="total-responses-number">{{highestPoll.totalResponse}}</div>
                 Responses
               </div>
             </div>
-            {{/if}}
-            {{/each}}
+            {{/each}} {{/if}}
           </div>
+
         </div>
       </div>
       {{/each}}

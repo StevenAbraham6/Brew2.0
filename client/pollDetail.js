@@ -5,8 +5,7 @@ import { HTTP } from 'meteor/http'
 
 
 Template.pollDetail.onCreated(function onCreated() {
-  this.defaultHighestPercentage = new ReactiveVar(true);
-  console.log("defaultHighestPercentage", this.defaultHighestPercentage.get());
+  this.hoverQuestion = new ReactiveVar(0);
   this.hoverChar = new ReactiveVar(null);
 });
 
@@ -79,11 +78,20 @@ Template.pollDetail.helpers({
     }
     return total
   },
-  defaultHighestPercentage() {
-    return Template.instance().defaultHighestPercentage.get();
+  hoverQuestion(quesNum){
+    var num = parseInt(quesNum.slice(-1));
+    return((Template.instance().hoverQuestion.get() ===num)?true:false);
   },
+
   hoverOption(optionChar) {
     return ((Template.instance().hoverChar.get() === optionChar) ? true : false);
+  },
+  showhighestPoll(quesNum){
+    var num = parseInt(quesNum.slice(-1));
+    if (Template.instance().hoverChar.get()!== null  && Template.instance().hoverQuestion.get()===num)
+    return false
+    else
+    return true
   },
   highestPollPercentage(question) {
     var response = question.responses,
@@ -125,13 +133,15 @@ Template.pollDetail.helpers({
 });
 
 Template.pollDetail.events({
+  'mouseenter section'(e,instance) {
+    var quesNum= parseInt(e.currentTarget.getAttribute('id').slice(-1));
+    instance.hoverQuestion.set(quesNum);
+  },
   'mouseenter .responses'(e, instance) {
-    instance.defaultHighestPercentage.set(false);
     var hoverChar = e.currentTarget.getElementsByClassName("option-char")[0].innerText;
     instance.hoverChar.set(hoverChar);
   },
   'mouseleave .responses'(event, instance) {
-    instance.defaultHighestPercentage.set(true);
     instance.hoverChar.set(null);
   },
   'click .fa-trash': function endPollModal(e) {
@@ -139,6 +149,13 @@ Template.pollDetail.events({
   },
   'click .fa-envelope': function emailPollModal(params) {
     Modal.show('emailPollModal');
+  },
+  'click .nav-button': function activeButton(e) {
+   e.currentTarget.addClass("active");
+    $(this).siblings().removeClass("active");
+  },
+  'click .bk-btn': function home(e) {
+    FlowRouter.go('/panel')
   }
 
 });

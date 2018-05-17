@@ -26,3 +26,6 @@ kadira:blaze-layout
 accounts-password
 peppelg:bootstrap-3-modal
 twbs:bootstrap
+matb33:bootstrap-glyphicons@=10.0.0
+jquery@1.11.10
+simple:reactive-method
