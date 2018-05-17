@@ -1,6 +1,7 @@
 /* CSS declarations go here */
 body {
   font-family:'CiscoSansTTLight' ;
+  font-size: 15px;
 }
 
 .login-container {
@@ -302,6 +303,7 @@ header .hide-completed {
   overflow: hidden;
   box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
   transition: box-shadow 0.3s ease-in-out;
+  display: block !important;
 }
 .card:hover{
       box-shadow: 0px 5px 25px 0px rgba(0,0,0,0.4);

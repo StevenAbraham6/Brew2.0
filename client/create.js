@@ -28,7 +28,7 @@ if (Meteor.isServer) {
 if (Meteor.isClient) {
 
   Template.spaceDrop.onCreated(function () {
-    var userToken = Session.get('user')
+    var userToken = Session.get('userToken')
     var template = this;
     template.externalData = new ReactiveVar(null);
     Meteor.call('spaces', [userToken], function (err, result) {
