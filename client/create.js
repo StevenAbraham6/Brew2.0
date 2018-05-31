@@ -359,8 +359,9 @@ if (Meteor.isClient) {
       var question = document.getElementsByClassName("squestion1")[0].value;
       var options = document.getElementsByClassName('options');
       var spaceId = document.getElementsByClassName('spaceSelect')[0].value;
+      var spaceName = document.getElementsByClassName('spaceSelect')[0].innerText;
       //var spaceName = document.getElementsByClassName('spaceSelect')[0].value[name];
-      console.log(spaceId);
+      console.log("Id",spaceId,"SPace Name",spaceName);
       // console.log(spaceName);
 
       Session.set('Space', spaceId);
@@ -373,12 +374,12 @@ if (Meteor.isClient) {
       }
       param["pollId"] = pollTitle + new Date().toISOString();
       param["pollTitle"] = pollTitle;
-      param["pollOwnerId"] = Session.get('username');
-      param["pollOwnerEmail"] = Session.get('email');
+      param["pollOwnerId"] = Meteor.userId();
+      param["pollOwnerEmail"] = Session.get('userEmail');
       param["pollState"] = "Running";
-      param["pollType"] = "Poll";
-      param["pollTargetRoom"] = spaceId;
-      param["pollTargetRoomName"] = "Test Poll";
+      param["pollType"] = "poll";
+      param["pollTargetRoom"] = "Y2lzY29zcGFyazovL3VzL1JPT00vZWVlZTVkNTAtNTliZC0xMWU4LThmZTAtYjllMGU0NWExZWQ3";
+      param["pollTargetRoomName"] = "Test for PDA";
       param["createdAt"] = new Date().toISOString();
       param["questions"] = [{ text: question, options: op, responses: responses }];
       console.log(param);
@@ -386,12 +387,14 @@ if (Meteor.isClient) {
       //BlazeLayout.render('panel');
 
       post["pollId"] = pollTitle + new Date().toISOString();
-      post["personId"] = Session.get('username');
+      post["personId"] = Meteor.userId();
       post["roomId"] = spaceId;
-      post["type"] = "Poll";
+      post["type"] = "poll";
       post["title"] = pollTitle;
       post["question"] = question;
       post["options"] = op;
+      post["totalQuestion"] = "1";
+      post["pollTargetRoomName"] = "Test for PDA";
 
 
       var postData = {
@@ -420,7 +423,7 @@ if (Meteor.isClient) {
         }
 
       })
-
+      FlowRouter.go('/pollDetail')
     },
 
     'click .surveyBtn': function (e) {
@@ -429,6 +432,8 @@ if (Meteor.isClient) {
       var pollTitle = document.getElementsByClassName("pollName")[0].value;
       var question = document.getElementsByClassName("squestion1");
       var spaceId = document.getElementsByClassName('spaceSelect')[0].value;
+      var spaceName = document.getElementsByClassName('spaceSelect')[0].innerText;
+      console.log(spaceName);
       var quesLength = question.length;
 
       var param = [], ques = [], op = [], responses = [], post = [];
@@ -465,24 +470,26 @@ if (Meteor.isClient) {
       console.log(ques)
 
       post["pollId"] = pollTitle + new Date().toISOString();
-      post["personId"] = Session.get('username');
+      post["personId"] = Meteor.userId();
       post["roomId"] = spaceId;
-      post["type"] = "Survey";
+      post["type"] = "survey";
       post["title"] = pollTitle;
       post["question"] = ques["text"][0];
       post["options"] = ques["options"][0];
+      post["totalQuestion"] = quesLength;
+      post["pollTargetRoomName"] = "Test for PDA";
 
 
 
 
       param["pollId"] = pollTitle + new Date().toISOString();
       param["pollTitle"] = pollTitle;
-      param["pollOwnerId"] = Session.get('username');
-      param["pollOwnerEmail"] = Session.get('email');
+      param["pollOwnerId"] = Meteor.userId();
+      param["pollOwnerEmail"] = Session.get('userEmail');
       param["pollState"] = "Running";
-      param["pollType"] = "Survey";
-      param["pollTargetRoom"] = "Y2lzY29zcGFyazovL3VzL1JPT00vODEwNWRiYTAtMDAxOC0xMWU4LTliZTMtMGJhN2ZjZjgwNzc5";
-      param["pollTargetRoomName"] = "Test Poll";
+      param["pollType"] = "survey";
+      param["pollTargetRoom"] = "Y2lzY29zcGFyazovL3VzL1JPT00vZWVlZTVkNTAtNTliZC0xMWU4LThmZTAtYjllMGU0NWExZWQ3";
+      param["pollTargetRoomName"] = "Test for PDA";
       param["createdAt"] = new Date().toISOString();
       param["questions"] = ques;
       console.log(param);
@@ -501,7 +508,7 @@ if (Meteor.isClient) {
         }
 
       })
-
+      FlowRouter.go('/pollDetail')
     },
 
     'click .feedbackBtn': function (e, instance) {
@@ -544,12 +551,12 @@ if (Meteor.isClient) {
       }
       param["pollId"] = pollTitle + new Date().toISOString();
       param["pollTitle"] = pollTitle;
-      param["pollOwnerId"] = Session.get('username');
-      param["pollOwnerEmail"] = Session.get('email');
+      param["pollOwnerId"] = Meteor.userId();
+      param["pollOwnerEmail"] = Session.get('userEmail');
       param["pollState"] = "Running";
       param["pollType"] = "feedback";
-      param["pollTargetRoom"] = "Y2lzY29zcGFyazovL3VzL1JPT00vODEwNWRiYTAtMDAxOC0xMWU4LTliZTMtMGJhN2ZjZjgwNzc5";
-      param["pollTargetRoomName"] = "Test Poll";
+      param["pollTargetRoom"] = "";
+      param["pollTargetRoomName"] = pollTitle;
       param["createdAt"] = new Date().toISOString();
       param["questions"] = [{ text: question, options: op, responses: responses }];
       console.log(param);
@@ -557,14 +564,16 @@ if (Meteor.isClient) {
       //BlazeLayout.render('panel');
 
       post["pollId"] = pollTitle + new Date().toISOString();
-      post["personId"] = Session.get('username');
+      post["personId"] = Meteor.userId();
       post["roomId"] = pollTitle;
       post["type"] = "feedback";
       post["title"] = pollTitle;
       post["question"] = question;
       post["options"] = op;
+      post["totalQuestion"] = "1";
+      post["pollTargetRoomName"] = pollTitle;
 
-
+      FlowRouter.go('/pollDetail')
     }
 
   });

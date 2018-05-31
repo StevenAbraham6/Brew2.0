@@ -11,7 +11,8 @@
       {{#each userPoll in userPolls}}
       <div class="card-item" pollId="{{userPoll.pollId}}">
         <div class="card">
-          {{#if userPollisPoll userPoll}} {{#if isActive userPoll.pollState}}
+          {{#if userPollisPoll userPoll}} 
+          {{#if isActive userPoll.pollState}}
           <div class="active-card-left">
             <div class="panel-poll-percent">{{percentage userPoll.questions}}%</div>
             <div class="option">{{highestOption userPoll.questions}}</div>

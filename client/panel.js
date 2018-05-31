@@ -10,9 +10,9 @@ Template.panel.helpers({
   },
 
   userPollsExist() {
-    //var pollOwnerId = this.userId;
-    var pollOwnerId = "Th94zGtPEDf29CAqX"
-    console.log("UserId", pollOwnerId)
+    var pollOwnerId = Meteor.userId();
+    //var pollOwnerId = "Th94zGtPEDf29CAqX"
+    console.log("UserId 1", pollOwnerId)
     var query = {
       'pollOwnerId': pollOwnerId
     }
@@ -21,13 +21,13 @@ Template.panel.helpers({
     return userPolls.length > 0 ? true : false
   },
   userPollisPoll(poll) {
-    return poll.pollType == 'Poll' ? true : false;
+    return poll.pollType == 'poll' ? true : false;
   },
 
   userPolls() {
-    //var pollOwnerId= this.userId;
-    var pollOwnerId = "Th94zGtPEDf29CAqX"
-    console.log("UserId", pollOwnerId)
+    var pollOwnerId = Meteor.userId();
+    //var pollOwnerId = "Th94zGtPEDf29CAqX"
+    console.log("UserId 2", pollOwnerId)
     var query = {
       'pollOwnerId': pollOwnerId
     }

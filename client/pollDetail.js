@@ -24,7 +24,7 @@ Template.pollDetail.helpers({
 
   pollisSurvey(poll){
     console.log('Type',poll.pollType);
-    return poll.pollType == 'Survey'?true:false;
+    return poll.pollType !== 'poll'?true:false;
   },
 
   options(question) {
