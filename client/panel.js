@@ -104,10 +104,9 @@ Template.panel.helpers({
 });
 
 Template.panel.events({
-  'click .float': function () {
-    console.log("You pressed the button")
-    Tasks.remove({ '_id': "q457w5C4nN5ofb3kv" })
-    /*Tasks.insert({
+  'click .float-button-text': function () {
+    /*Tasks.remove({ '_id': "q457w5C4nN5ofb3kv" })
+      Tasks.insert({
       "pollId": "Testing2",
       "pollTitle": "The Lunch Poll The Lunch Poll The Lunch Poll The Lunch Poll The Lunch Poll The Lunch Poll",
       "pollOwnerId": "Th94zGtPEDf29CAqX",

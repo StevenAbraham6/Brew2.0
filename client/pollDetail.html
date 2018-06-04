@@ -1,9 +1,11 @@
 <template name="pollDetail">
-  <div class="overlay">
-  <div class="bk-btn">
-    <div class="bk-btn-triangle"></div>
-    <div class="bk-btn-bar"></div>
+  <div class="header-bar">
+    <div class="header-title">&nbsp;</div>
+    <a class="float-button float-left home">
+      <i class="fa fa-home"></i>
+    </a>
   </div>
+  <div class="overlay">
     <div class="card-grid">
       {{#each poll in selectedPoll}} 
       {{#if pollisSurvey poll}} 

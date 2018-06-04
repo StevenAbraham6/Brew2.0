@@ -154,7 +154,7 @@ Template.pollDetail.events({
    e.currentTarget.addClass("active");
     $(this).siblings().removeClass("active");
   },
-  'click .bk-btn': function home(e) {
+  'click .home': function home(e) {
     FlowRouter.go('/panel')
   }
 

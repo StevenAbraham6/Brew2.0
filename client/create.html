@@ -1,13 +1,14 @@
 <template name='create'>
+    <div class="header-bar">
+        <div class="header-title">&nbsp;</div>
+        <a class="float-button float-left home">
+            <i class="fa fa-home"></i>
+        </a>
+    </div>
     <div class="container-fluid overlay">
-        <section class="container">
-            <div class="container-page">
-                <div class="row">
-                    <div class="poll-form">
-                        {{>form}}
-                    </div>
-
-                </div>
+        <section class="container card-grid">
+            <div class="poll-form card-item-wide">
+                {{>form}}
             </div>
         </section>
     </div>
@@ -15,26 +16,14 @@
 
 <template name='form'>
     <form role="form" class="CreateForm" autocomplete="off">
-        <div class="form-group">
+        <div class="form-group type-selector">
             {{>tab}}
             <!--  {{>pollSlider}}-->
         </div>
-        <div class="card-item-wide">
         {{> Template.dynamic template=form}}
-        </div>
     </form>
 </template>
 
-<!-- <template name='pollSlider'>
-    <div class="slider1">Poll
-        <label class="switch">
-            <input type="checkbox" class="check1">
-            <span class="slider round"></span>
-        </label>
-        Survey
-
-    </div>
-</template> -->
 
 <template name='tab'>
     <ul class="nav nav-pills">
