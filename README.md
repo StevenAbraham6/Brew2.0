@@ -27,7 +27,7 @@ Create a User on the endpoint. To do this, you need to access the admin panel of
 ### Step 2
 Clone the repository using the following command
 ```
-$ git clone https://github.com/5t3v3n/brew.git
+$ git clone https://github.com/5t3v3n/Brew.git
 ```
 
 ### Step 3
