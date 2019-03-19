@@ -25,23 +25,21 @@ Create a User on the endpoint. To do this, you need to access the admin panel of
 ![alt text](https://user-images.githubusercontent.com/12582569/54212591-2e943d80-4509-11e9-8978-28a5e3188387.png)
 
 ### Step 2
+Upload the XML File **roomcontrolconfig.xml** available in the repository to the system. To do so, visit the admin panel of the device. Under **Integrations**, click **In-room Control** and launch the Editor. Upload the XML file to the endpoint.
+
+![alt text](https://user-images.githubusercontent.com/12582569/54215654-4b7f3f80-450e-11e9-9217-fb998c876d8f.png)
+
+### Step 3
 Clone the repository using the following command
 ```
 $ git clone https://github.com/5t3v3n/Brew.git
 ```
 
-### Step 3
-Upload the XML File **roomcontrolconfig.xml** available in the repository to the system. To do so, visit the admin panel of the device. Under **Integrations**, click **In-room Control** and launch the Editor. Upload the XML file to the endpoint.
-
-![alt text](https://user-images.githubusercontent.com/12582569/54215654-4b7f3f80-450e-11e9-9217-fb998c876d8f.png)
-
-
 ### Step 4
-Set up the Bulb using the App. The detail procedure for the same can be found here:  
-https://www.youtube.com/watch?v=tYiz8AegtQ4
-
-Be sure to enable **Developer Mode** in the settings for the bulb on the mobile app.
-
+Clone the repository using the following command
+```
+$ git clone https://github.com/5t3v3n/Brew.git
+```
 
 ### Step 5
 Make the change to IP address in the **control.js**.
