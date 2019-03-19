@@ -33,7 +33,8 @@ var roomName="BGL21-2-SantaClara"
 const jsxapi = require('jsxapi')
 
 //ENTER THE DEVICE IP ADDRESS HERE
-const xapi = jsxapi.connect("ssh://10.105.16.78", {
+const ipAddress = "ssh://10.105.16.78"
+const xapi = jsxapi.connect(ipAddress, {
   username: 'integrator',
   password: 'integrator'
 })
