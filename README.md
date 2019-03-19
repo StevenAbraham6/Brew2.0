@@ -6,9 +6,6 @@
 * [Setup](#setup)
 
 
-![alt text](https://user-images.githubusercontent.com/12582569/54210337-4e296700-4505-11e9-92e1-c3cf854d520d.png
-)
-
 ## Components
 * Any Cisco Video Endpoint with a Touch 10 panel or a Dx80. For more information on supported devices visit:   https://help.webex.com/en-us/n18glho/In-Room-Controls-and-Use-of-an-External-Video-Switch-with-Room-Devices
 
@@ -30,7 +27,7 @@ Create a User on the endpoint. To do this, you need to access the admin panel of
 ### Step 2
 Clone the repository using the following command
 ```
-$ git clone https://github.com/5t3v3n/InRoomControl.git
+$ git clone https://github.com/5t3v3n/brew.git
 ```
 
 ### Step 3
