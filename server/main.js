@@ -27,9 +27,6 @@ Meteor.startup(() => {
 var MongoClient = require('mongodb').MongoClient;
 var url = "mongodb://localhost:3001/";
 
-//ENTER THE ROOM NAME HERE
-var roomName="BGL21-2-SantaClara"
-
 const jsxapi = require('jsxapi')
 
 //ENTER THE DEVICE IP ADDRESS HERE
@@ -56,12 +53,22 @@ const logger = createLogger({
 });
 
 
+logger.info("Attempting to Establish Connection to Endpoint")
+
 xapi.on('error', (err) => {
-  console.error(`connection failed: ${err}, exiting`);
+  logger.error(`connection failed: ${err}, exiting`);
   process.exit(1);
 })
 
-logger.info("Ready for INPUT from PANEL")
+var roomName;
+  // Retrieve and display the Endpoint Name
+     xapi.status
+         .get('UserInterface')
+         .then((contactinfo) => {
+             logger.info(`Established Connection to Endpoint : ${contactinfo.ContactInfo.Name}`);
+             roomName=contactinfo.ContactInfo.Name;
+             logger.info("*** READY FOR INPUT FROM PANEL ***")
+         });
 
 
 //Calling the Concierge
