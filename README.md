@@ -36,13 +36,7 @@ $ git clone https://github.com/5t3v3n/Brew.git
 ```
 
 ### Step 4
-Clone the repository using the following command
-```
-$ git clone https://github.com/5t3v3n/Brew.git
-```
-
-### Step 5
-Make the change to IP address in the **control.js**.
+Make the change to IP address in the **main.js**.
 ```
 const ipAddress = "ssh://ENDPOINT_IPADDRESS"
 ```
