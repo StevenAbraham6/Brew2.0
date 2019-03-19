@@ -45,13 +45,13 @@ const ipAddress = "ssh://ENDPOINT_IPADDRESS"
 ### Step 6
 Install Dependencies
 ```
-$ npm install
+$ meteor npm install
 ```
 
 ### Step 7
 Run the code 
 ```
-$ node control.js
+$ meteor
 ```
 
 
