@@ -443,7 +443,11 @@ xapi.event.on('UserInterface Extensions Widget Action', (event) => {
         var dbo = db.db("meteor");
         dbo.collection("polls").findOne({roomName: roomName}, function(err, result) {
           if (err) throw err;
-          if(result!=null&&result.masalaChai!=0){
+          if(result==null)
+          {
+            console.log("@@@@@@@");
+          }
+          if(result!=null&&result.masalaChai!=0 && result.masalaChai!=null ){
             //update the state of the record if already existing order
             xapi.command('UserInterface Extensions Widget SetValue', {
               WidgetId: 'masala_chai_text',

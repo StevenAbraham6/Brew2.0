@@ -670,7 +670,7 @@ Template.Poll.onCreated(function () {
           </span>
         </div>
       </div>`;
-  
+
 
       $formGroupClone.find('input').val('');
       //$(newOp).insertAfter($formGroup);
