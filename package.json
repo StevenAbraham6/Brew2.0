@@ -5,9 +5,12 @@
     "start": "meteor run"
   },
   "dependencies": {
-    "@babel/runtime": "^7.0.0-beta.36",
+    "@babel/runtime": "7.0.0-beta.55",
     "bcrypt": "^1.0.3",
+    "jsxapi": "^4.2.0",
     "meteor-node-stubs": "^0.3.2",
-    "mki-font-ciscosans": "^1.0.0"
+    "mki-font-ciscosans": "^1.0.0",
+    "mongodb": "^3.1.13",
+    "winston": "^3.2.1"
   }
 }

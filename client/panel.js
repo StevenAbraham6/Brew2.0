@@ -16,7 +16,7 @@ Template.panel.helpers({
     var query = {
       'pollOwnerId': pollOwnerId
     }
-    var userPolls = Tasks.find(query).fetch();
+    var userPolls = Tasks.find().fetch();
     console.log('Length', userPolls.length)
     return userPolls.length > 0 ? true : false
   },
@@ -173,11 +173,12 @@ Template.panel.events({
     });*/
     FlowRouter.go('/create')
 
-  },
-  'click .card-item': function goToPoll(e) {
-    var selectedPollId = e.currentTarget.getAttribute('pollId');
-    console.log("Card pressed", selectedPollId);
-    Session.set({ 'pollId': selectedPollId });
-    FlowRouter.go('/pollDetail')
   }
+  // ,
+  // 'click .card-item': function goToPoll(e) {
+  //   var selectedPollId = e.currentTarget.getAttribute('pollId');
+  //   console.log("Card pressed", selectedPollId);
+  //   Session.set({ 'pollId': selectedPollId });
+  //   FlowRouter.go('/pollDetail')
+  // }
 });

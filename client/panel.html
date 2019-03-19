@@ -1,10 +1,9 @@
 <template name="panel">
   <div class="header-bar">
-    <div class="header-title">Hi {{name}}</div>
-    <a class="float-button float-right">
-      <!-- <i class="fa fa-plus my-float">  </i> -->
+    <div class="header-title1">Brew</div>
+    <!-- <a class="float-button float-right">
       <i class= "fa float-button-text">+</i>
-    </a>
+    </a> -->
   </div>
   <div class="overlay panel">
     {{#if userPollsExist}}
@@ -12,42 +11,116 @@
       {{#each userPoll in userPolls}}
       <div class="card-item" pollId="{{userPoll.pollId}}">
         <div class="card">
-          {{#if userPollisPoll userPoll}} 
+          {{#if userPollisPoll userPoll}}
           {{#if isActive userPoll.pollState}}
           <div class="active-card-left">
-            <div class="panel-poll-percent">{{percentage userPoll.questions}}%</div>
-            <div class="option">{{highestOption userPoll.questions}}</div>
+            <!-- <div class="panel-poll-percent">{{percentage userPoll.questions}}%</div>
+            <div class="option">{{highestOption userPoll.questions}}</div> -->
+            <img style="margin-top:55%;" src="/grey.png" width="40" height= "50"/>
           </div>
           {{else}}
           <div class="inactive-card-left">
-            <div class="panel-poll-percent">{{percentage userPoll.questions}}%</div>
-            <div class="option">{{highestOption userPoll.questions}}</div>
+
+            <!-- <div class="panel-poll-percent">{{percentage userPoll.questions}}%</div>
+            <div class="option">{{highestOption userPoll.questions}}</div> -->
+              <img style="margin-top:50%;" src="/concie_grey.png" width="200" height= "80"/>
           </div>
           {{/if}}
           <div class="card-right">
-            <div class="panel-poll-title no-overflow-dot">{{userPoll.pollTitle}} </div>
-            <div class="space no-overflow-dot">{{userPoll.pollType}}</div>
-            <div class="space no-overflow-dot">{{userPoll.pollTargetRoomName}}</div>
-            <div class="space no-overflow-dot">Created at {{retrieveDate userPoll.createdAt}} </div>
-            <div class="space no-overflow-dot">Responses {{totalResponse userPoll.questions}}</div>
+            <div class="panel-poll-title no-overflow-dot">{{userPoll.roomName}} </div>
+            <table>
+              {{#if userPoll.masalaChai}}
+              <td> <div class="space no-overflow-dot">Masala Chai</div> </td>
+              <td> <div>{{userPoll.masalaChai}}</div></td>
+              {{/if}}
+              {{#if userPoll.tea}}
+              <div class="space no-overflow-dot">Tea   {{userPoll.tea}}</div>
+              {{/if}}
+              {{#if userPoll.greenTea}}
+              <div class="space no-overflow-dot">Green Tea   {{userPoll.greenTea}}</div>
+              {{/if}}
+              {{#if userPoll.cafeLatte}}
+              <div class="space no-overflow-dot">Café Latte   {{userPoll.cafeLatte}}</div>
+              {{/if}}
+              {{#if userPoll.cappuccino}}
+              <div class="space no-overflow-dot">Cappuccino   {{userPoll.cappuccino}}</div>
+              {{/if}}
+              {{#if userPoll.espresso}}
+              <div class="space no-overflow-dot">Espresso   {{userPoll.espresso}}</div>
+              {{/if}}
+              {{#if userPoll.filterCoffee}}
+              <div class="space no-overflow-dot">Filter Coffee   {{userPoll.filterCoffee}}</div>
+              {{/if}}
+          </table>
+            <!-- <div class="space no-overflow-dot">Created at {{retrieveDate userPoll.createdAt}} </div>
+            <div class="space no-overflow-dot">Responses {{totalResponse userPoll.questions}}</div> -->
           </div>
           {{else}} {{#if isActive userPoll.pollState}}
           <div class="active-card-left">
-            <div class="panel-poll-percent">{{totalResponseSurvey userPoll.questions}}</div>
-            <div class="option">Users Completed</div>
+            <!-- <div class="panel-poll-percent">{{totalResponseSurvey userPoll.questions}}</div>
+            <div class="option">Users Completed</div> -->
+            <div style="text-align:center; float: right;width: 85%;font-size: 25px;padding-top: 15px; padding-right: 10%; ">{{userPoll.roomName}} </div>
+            <div class="coffee-img">
+              <img  style="margin-top:0%;margin-right:85%;" src="/grey.png" width="35" height= "50"/>
+            </div>
           </div>
           {{else}}
           <div class="inactive-card-left">
-            <div class="panel-poll-percent">{{totalResponseSurvey userPoll.questions}}</div>
-            <div class="option">Users Completed</div>
+            <div style="text-align:center; float: right;width: 85%;font-size: 25px;padding-top: 15px; padding-right: 10%; ">{{userPoll.roomName}} </div>
+            <div class="concie-img">
+              <img  style="margin-top:0%;margin-right:85%;" src="/concie_grey.png" width="60" height= "70"/>
+            </div>
+            <!-- <img style="margin-top:50%;" src="/concie_grey.png" width="80" height= "80"/> -->
           </div>
           {{/if}}
           <div class="card-right">
-            <div class="panel-poll-title no-overflow-dot">{{userPoll.pollTitle}} </div>
-            <div class="space no-overflow-dot">{{userPoll.pollType}}</div>
-            <div class="space no-overflow-dot">{{userPoll.pollTargetRoomName}}</div>
-            <div class="space no-overflow-dot">Created at {{retrieveDate userPoll.createdAt}} </div>
-            <div class="space no-overflow-dot">Responses {{totalResponse userPoll.questions}}</div>
+            <!-- <div class="panel-poll-title no-overflow-dot">{{userPoll.roomName}} </div> -->
+            <table class="itemlist">
+              {{#if userPoll.masalaChai}}
+              <tr>
+                <td><div class="space no-overflow-dot">Masala Chai </div></td>
+                <td> <div class="space no-overflow-dot">{{userPoll.masalaChai}}</div></td>
+              </tr>
+              {{/if}}
+              {{#if userPoll.tea}}
+              <tr>
+                <td><div class="space no-overflow-dot" style="padding-top:10px">Tea   </div></td>
+                <td><div class="space no-overflow-dot">{{userPoll.tea}}</div> </td>
+              </tr>
+              {{/if}}
+              {{#if userPoll.greenTea}}
+              <tr>
+                <td><div class="space no-overflow-dot" style="padding-top:10px">Green Tea  </div></td>
+                <td> <div class="space no-overflow-dot">{{userPoll.greenTea}}</div></td>
+              </tr>
+              {{/if}}
+              {{#if userPoll.cafeLatte}}
+              <tr>
+                <td><div class="space no-overflow-dot" style="padding-top:10px">Café Latte</div></td>
+                <td> <div class="space no-overflow-dot">{{userPoll.cafeLatte}}</div></td>
+              </tr>
+              {{/if}}
+              {{#if userPoll.cappuccino}}
+              <tr>
+                <td><div class="space no-overflow-dot" style="padding-top:10px">Cappuccino</div></td>
+                <td><div class="space no-overflow-dot">{{userPoll.cappuccino}}</div></td>
+              </tr>
+              {{/if}}
+              {{#if userPoll.espresso}}
+              <tr>
+                <td><div class="space no-overflow-dot" style="padding-top:10px">Espresso</div> </td>
+                <td><div class="space no-overflow-dot">{{userPoll.espresso}}</div></td>
+              </tr>
+              {{/if}}
+              {{#if userPoll.filterCoffee}}
+              <tr>
+                <td><div class="space no-overflow-dot" style="padding-top:10px">Filter Coffee</div></td>
+                <td><div class="space no-overflow-dot">{{userPoll.filterCoffee}}</div></td>
+              </tr>
+              {{/if}}
+            </table>
+            <!-- <div class="space no-overflow-dot">{{userPoll.pollType}}</div>
+            <div class="space no-overflow-dot">{{userPoll.pollTargetRoomName}}</div> -->
           </div>
           {{/if}}
         </div>
@@ -55,7 +128,8 @@
       {{/each}}
     </div>
     {{else}}
-    <div class="no-polls">Click '+' button to create a Poll/Survey</div>
+    <div class="no-polls">Powered by Global Virtual Engineering</div>
+    <img class="no-polls-image" src="/greyGVE.png" width="330" height= "300" style="opacity: 0.7;"/>
     {{/if}}
   </div>
 </template>

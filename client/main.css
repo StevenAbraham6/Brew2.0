@@ -206,7 +206,7 @@ header .hide-completed {
       z-index:-100;
       overflow-y: scroll;
       padding-top:50px;
-     
+
 }
 
 @media screen and (max-width: 600px) {
@@ -237,7 +237,7 @@ header .hide-completed {
 }
 
 #panelImg {
-  max-height:100%; 
+  max-height:100%;
   max-width:100%;
 }
 
@@ -265,7 +265,7 @@ header .hide-completed {
   top:0;bottom:0;left:0;right:0
 }
 
-.plusShape:after { 
+.plusShape:after {
   position:absolute;
   content:'';
   margin:auto;
@@ -281,6 +281,12 @@ header .hide-completed {
   padding: 30px;
   text-align: center;
 }
+.no-polls-image{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+
+}
 .card-grid {
   margin: 30px 10px 10px 30px;
   display: flex;
@@ -290,9 +296,9 @@ header .hide-completed {
 
 .card-item {
   background: #fff;
-  height: 200px;
-  width: 500px;
-  margin: 20px 30px;
+  height: 500px;
+  width: 450px;
+  margin: 40px 30px;
   margin-bottom: 1rem;
 }
 
@@ -329,42 +335,63 @@ header .hide-completed {
 }
 
 .inactive-card-left{
+  /* display: block;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  width: 20%;
+  height: 100%;
+  float: left;
+  background-color:#F5C243;
+  color: #fff;
+  text-align: center;
+  position: relative; */
   display: block;
   align-items: center;
   justify-content: center;
   margin: 0;
-  width: 30%;
-  height: 100%;
+  width: 100%;
+  height: 15%;
   float: left;
-  background-color:#d9d9d9;
+  background-color: #F5C243;
   color: #fff;
   text-align: center;
   position: relative;
+
 }
-.active-card-left{ 
+.active-card-left{
   display: block;
   align-items: center;
   justify-content: center;
   margin: 0;
-  width: 30%;
-  height: 100%;  
-  float: left; 
+  width: 100%;
+  height: 15%;
+  float: left;
   background-color: #79c143;
   color: #fff;
   text-align: center;
   position: relative;
 }
-.card-right { 
-  height: 100%;  
-  padding: 10px 10px 10px 170px;
+
+.coffee-img {
+  width: 15%;
+  padding: 15px 10px;
+}
+.concie-img {
+  width: 15%;
+  padding-left: 10px;
+}
+.card-right {
+  height: 100%;
+  /*padding: 10px 10px 10px 170px;*/
 }
 .space {
   margin:7px;
-  font-size: 15px;
+  font-size: 16px;
 }
 .no-overflow-dot {
   text-overflow: ellipsis;
-  overflow: hidden; 
+  overflow: hidden;
   white-space: nowrap;
 }
 
@@ -386,7 +413,7 @@ header .hide-completed {
 .panel-poll-title {
   font-size: 30px;
   width: 100%;
-  margin: 10px 0;
+  margin: 0px 0;
 }
 
 .header-bar{
@@ -399,8 +426,17 @@ header .hide-completed {
   left:0px;
 }
 
-.header-title {
+.header-title1 {
   font-size: 25px;
+  font-family: CiscoSansTTLight;
+  font-weight: 100;
+}
+
+.header-title2 {
+  font-size: 15px;
+  font-family: CiscoSansTTLight;
+  font-weight: 100;
+
 }
 
 .poll-title {
@@ -469,7 +505,7 @@ table {
 td {
   font-size: 20px;
   padding: 10px;
-  
+
 }
 td:first-child{
   padding-left: 40px;
@@ -625,3 +661,10 @@ height: 25px;
   background-color: #79c143;
 }
 
+.itemlist td {
+  width:50% ;
+}
+
+.itemlist td:nth-child(even){
+  text-align: center;
+}
