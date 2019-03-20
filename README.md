@@ -54,4 +54,10 @@ Run the code
 $ meteor
 ```
 
+### Step 8
+Run the code with updates 
+```
+$ bash 
+```
+
 
