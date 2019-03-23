@@ -12,7 +12,7 @@
 
 ## Prerequisite
 * NodeJS installed on your laptop: https://nodejs.org/en/download/
-* MeteorJS installed on your laptop: https://www.meteor.com/install
+* MeteorJS installed on your laptop: https://blog.ajduke.in/2015/09/29/guide-to-meteor-install-and-uninstall/
 * You must have admin access to the Cisco Endpoint 
 
 	
