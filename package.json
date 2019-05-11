@@ -5,8 +5,9 @@
     "start": "meteor run"
   },
   "dependencies": {
-    "@babel/runtime": "7.0.0-beta.55",
+    "@babel/runtime": "^7.4.4",
     "bcrypt": "^1.0.3",
+    "body-parser": "^1.19.0",
     "jsxapi": "^4.2.0",
     "meteor-node-stubs": "^0.3.2",
     "mki-font-ciscosans": "^1.0.0",

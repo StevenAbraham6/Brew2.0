@@ -11,13 +11,10 @@ Template.panel.helpers({
 
   userPollsExist() {
     var pollOwnerId = Meteor.userId();
-    //var pollOwnerId = "Th94zGtPEDf29CAqX"
-    console.log("UserId 1", pollOwnerId)
     var query = {
       'pollOwnerId': pollOwnerId
     }
     var userPolls = Tasks.find().fetch();
-    console.log('Length', userPolls.length)
     return userPolls.length > 0 ? true : false
   },
   userPollisPoll(poll) {
@@ -101,84 +98,4 @@ Template.panel.helpers({
       }
     }
   }
-});
-
-Template.panel.events({
-  'click .float-button-text': function () {
-    /*Tasks.remove({ '_id': "q457w5C4nN5ofb3kv" })
-      Tasks.insert({
-      "pollId": "Testing2",
-      "pollTitle": "The Lunch Poll The Lunch Poll The Lunch Poll The Lunch Poll The Lunch Poll The Lunch Poll",
-      "pollOwnerId": "Th94zGtPEDf29CAqX",
-      "pollOwnerEmail": "stevabra@cisco.com",
-      "pollState": "Inactive",
-      "pollAudience": "Closed",
-      "pollType": "Survey",
-      "pollTargetRoom": "Y2lzY29zcGFyazovL3VzL1JPT00vODEwNWRiYTAtMDAxOC0xMWU4LTliZTMtMGJhN2ZjZjgwNzc5",
-      "pollTargetRoomName": "Bots Room",
-      "createdAt": "2018-04-03T09:52:19.789Z",
-      "questions": [
-        {
-          "text": "what do we have for lunch?",
-          "options": [
-            "Indian",
-            "Chinese",
-            "Mexican",
-            "Italian"
-          ],
-          "responses": [
-            0,
-            1,
-            0,
-            0
-          ]
-        },
-        {
-          "text": "Do we go out?",
-          "options": [
-            "Yes",
-            "No"
-          ],
-          "responses": [
-            0,
-            0
-          ]
-        }
-      ]
-    });*/
-    /*Tasks.insert({
-      "pollId": "Testing3",
-      "pollTitle": "Outing Poll",
-      "pollOwnerId": "Th94zGtPEDf29CAqX",
-      "pollOwnerEmail": "ahmuruga@cisco.com",
-      "pollState": "Running",
-      "pollAudience": "Closed",
-      "pollType": "Poll",
-      "pollTargetRoom": "Y2lzY29zcGFyazovL3VzL1JPT00vODEwNWRiYTAtMDAxOC0xMWU4LTliZTMtMGJhN2ZjZjgwNzc5",
-      "pollTargetRoomName": "Bots Room",
-      "createdAt": "2018-04-03T09:52:19.789Z",
-      "questions": [
-        {
-          "text": "Do we go out?",
-          "options": [
-            "Yes",
-            "No"
-          ],
-          "responses": [
-            0,
-            0
-          ]
-        }
-      ]
-    });*/
-    FlowRouter.go('/create')
-
-  }
-  // ,
-  // 'click .card-item': function goToPoll(e) {
-  //   var selectedPollId = e.currentTarget.getAttribute('pollId');
-  //   console.log("Card pressed", selectedPollId);
-  //   Session.set({ 'pollId': selectedPollId });
-  //   FlowRouter.go('/pollDetail')
-  // }
 });
