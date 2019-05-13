@@ -2,7 +2,7 @@ module.exports = {
   servers: {
     one: {
       // TODO: set host address, username, and authentication method
-      host: '159.89.163.166',
+      host: '159.89.164.250',
       username: 'root',
       // pem: './path/to/pem'
       password: 'brewpassword123'
@@ -26,9 +26,8 @@ module.exports = {
     env: {
       // TODO: Change to your app's url
       // If you are using ssl, it needs to start with https://
-      ROOT_URL: 'http://www.mybrew.xyz',
-      MONGO_URL: 'mongodb://mongodb/meteor',
-      MONGO_OPLOG_URL: 'mongodb://mongodb/local',
+      ROOT_URL: 'https://www.mybrew.xyz',
+      MONGO_URL: 'mongodb://user:password@ds233208.mlab.com:33208/tasks',
     },
 
     docker: {
@@ -39,25 +38,21 @@ module.exports = {
     // Show progress bar while uploading bundle to server
     // You might need to disable it on CI servers
     enableUploadProgressBar: true
-  },
 
-  mongo: {
-    version: '3.4.1',
-    servers: {
-      one: {}
-    }
-  },
+  }
+
+
 
   // (Optional)
   // Use the proxy to setup ssl or to route requests to the correct
   // app when there are several apps
 
   // proxy: {
-  //   domains: 'mywebsite.com,www.mywebsite.com',
-
+  //   domains: 'mybrew.xyz,www.mybrew.xyz',
+  //
   //   ssl: {
   //     // Enable Let's Encrypt
-  //     letsEncryptEmail: 'email@domain.com'
+  //     letsEncryptEmail: 'steven4abraham@gmail.com'
   //   }
   // }
 };
