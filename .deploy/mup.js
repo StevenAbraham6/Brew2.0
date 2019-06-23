@@ -5,7 +5,7 @@ module.exports = {
       host: '159.89.164.250',
       username: 'root',
       // pem: './path/to/pem'
-      password: 'brewpassword123'
+      password: 'brewcisco1'
       // or neither for authenticate from ssh-agent
     }
   },
@@ -27,7 +27,7 @@ module.exports = {
       // TODO: Change to your app's url
       // If you are using ssl, it needs to start with https://
       ROOT_URL: 'https://www.mybrew.xyz',
-      MONGO_URL: 'mongodb://user:password@ds233208.mlab.com:33208/tasks',
+      MONGO_URL: 'mongodb://m3dbuser:m3dbpassword@ds155396.mlab.com:55396/brew',
     },
 
     docker: {

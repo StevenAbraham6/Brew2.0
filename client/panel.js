@@ -10,10 +10,6 @@ Template.panel.helpers({
   },
 
   userPollsExist() {
-    var pollOwnerId = Meteor.userId();
-    var query = {
-      'pollOwnerId': pollOwnerId
-    }
     var userPolls = Tasks.find().fetch();
     return userPolls.length > 0 ? true : false
   },
@@ -22,14 +18,9 @@ Template.panel.helpers({
   },
 
   userPolls() {
-    var pollOwnerId = Meteor.userId();
-    //var pollOwnerId = "Th94zGtPEDf29CAqX"
-    console.log("UserId 2", pollOwnerId)
-    var query = {
-      'pollOwnerId': pollOwnerId
-    }
+    var query = {}
     var userPolls = Tasks.find(query).fetch();
-    console.log(userPolls);
+    //console.log(userPolls);
     return userPolls
   },
 
